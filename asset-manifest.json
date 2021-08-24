@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/OTSecret/static/css/main.ea1455b2.chunk.css",
+    "main.js": "/OTSecret/static/js/main.597af258.chunk.js",
+    "main.js.map": "/OTSecret/static/js/main.597af258.chunk.js.map",
+    "runtime-main.js": "/OTSecret/static/js/runtime-main.861293b6.js",
+    "runtime-main.js.map": "/OTSecret/static/js/runtime-main.861293b6.js.map",
+    "static/js/2.f0815193.chunk.js": "/OTSecret/static/js/2.f0815193.chunk.js",
+    "static/js/2.f0815193.chunk.js.map": "/OTSecret/static/js/2.f0815193.chunk.js.map",
+    "static/js/3.08fd49eb.chunk.js": "/OTSecret/static/js/3.08fd49eb.chunk.js",
+    "static/js/3.08fd49eb.chunk.js.map": "/OTSecret/static/js/3.08fd49eb.chunk.js.map",
+    "index.html": "/OTSecret/index.html",
+    "static/css/main.ea1455b2.chunk.css.map": "/OTSecret/static/css/main.ea1455b2.chunk.css.map",
+    "static/js/2.f0815193.chunk.js.LICENSE.txt": "/OTSecret/static/js/2.f0815193.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.861293b6.js",
+    "static/js/2.f0815193.chunk.js",
+    "static/css/main.ea1455b2.chunk.css",
+    "static/js/main.597af258.chunk.js"
+  ]
+}
