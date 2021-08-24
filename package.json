@@ -1,0 +1,26 @@
+{
+  "name": "otsecret",
+  "version": "1.0.0",
+  "description": "OTSecret - a web app for sharing temporary secrets",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emman-B/OTSecret.git"
+  },
+  "keywords": [
+    "frontend",
+    "backend",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": "Emmanuel Butor <https://github.com/Emman-B>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emman-B/OTSecret/issues"
+  },
+  "homepage": "https://github.com/Emman-B/OTSecret#readme"
+}
