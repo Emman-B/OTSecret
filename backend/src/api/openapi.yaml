@@ -15,3 +15,75 @@ paths:
             text/plain; charset=utf-8:
               schema:
                 type: string
+
+  /v1/secret:
+    post:
+      summary: Creates a new secret message
+      requestBody:
+        description: The secret message and password to be provided
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSecret'
+      responses:
+        '200':
+          description: Creation successful, the id of the secret is provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                
+  /v1/secret/{id}:
+    post:
+      summary: Retrieve and delete a secret message
+      parameters:
+        - in: path
+          name: id
+          description: the ID of the secret message
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: the password for the secret message
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+      
+      responses:
+        '200':
+          description: Retrieval is successful, the message is provided and the secret is cleared from the server
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '404':
+          description: The id with the provided password was not found
+        
+      
+
+# Components
+components:
+  schemas:
+    NewSecret:
+      type: object
+      properties:
+        password:
+          type: string
+          minLength: 3
+          maxLength: 64
+        message:
+          type: string
+          minLength: 1
+          maxLength: 100

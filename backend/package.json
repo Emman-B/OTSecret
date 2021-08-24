@@ -4,7 +4,7 @@
   "description": "Backend for OTSecret",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon -e js,mjs,json,yaml src/server.js"
   },
   "repository": {
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Emman-B/OTSecret#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cryptr": "^6.0.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-openapi-validator": "^4.13.0",
@@ -31,6 +32,7 @@
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
     "nodemon": "^2.0.12"
   }
 }

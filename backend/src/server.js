@@ -1,4 +1,6 @@
-// This is for starting the server
+/**
+ * server.js is responsible for starting the server.
+ */
 
 const app = require('./app');
 

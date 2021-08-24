@@ -1,3 +1,7 @@
+/**
+ * app.js is the main app that handles all of the API routes.
+ */
+
 // set up dotenv
 require('dotenv').config();
 
@@ -12,6 +16,9 @@ const swaggerUi = require('swagger-ui-express'); // UI API testing
 const YAML = require('js-yaml');
 const fs = require('fs');
 const apiSpec = YAML.load(fs.readFileSync('src/api/openapi.yaml')); // load the api spec
+
+
+const { createNewSecret, cleanUpExpiredSecrets, retrieveSecret } = require('./secret');
 
 /**
  * Middleware Setup
@@ -39,6 +46,9 @@ app.use((err, req, res, next) => {
     });
 });
 
+// set up my middleware for cleaning up expired secrets
+app.use(cleanUpExpiredSecrets);
+
 /**
  * Paths
  */
@@ -46,5 +56,7 @@ app.use((err, req, res, next) => {
 app.get('/v1/', (req, res) => {
     res.status(200).send('Hello world!');
 });
+app.post('/v1/secret/', createNewSecret); // creates a secret
+app.post('/v1/secret/:id', retrieveSecret); // retrieves a secret
 
 module.exports = app;
