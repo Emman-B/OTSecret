@@ -14,6 +14,8 @@ require('dotenv').config({path: path});
 const express = require('express');
 const app = express(); // app is exported
 
+const cors = require('cors');
+
 
 // == Setting up api validation ==
 const OpenApiValidator = require('express-openapi-validator');
@@ -35,6 +37,11 @@ const { createNewSecret, cleanUpExpiredSecrets, retrieveSecret } = require('./se
  */
 // set up express json parser
 app.use(express.json());
+
+// set up cors
+const devURL = `http://localhost:3000`;
+const prodURL = process.env.PROD_URL;
+app.use(cors({origin: process.env.NODE_ENV === 'development'?devURL: prodURL}));
 
 // == Setting up api validation middleware ==
 // this sets up the api testing GUI
