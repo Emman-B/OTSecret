@@ -1,9 +1,14 @@
 /**
  * app.js is the main app that handles all of the API routes.
  */
-
+// if running this from root, indicate the backend directory since that is where .env is held
+const pathModule = require('path');
+let path = pathModule.resolve(process.cwd(), '.env');
+if (!process.cwd().includes('backend')) {
+    path = pathModule.resolve(process.cwd(), 'backend', '.env');
+}
 // set up dotenv
-require('dotenv').config();
+require('dotenv').config({path: path});
 
 
 const express = require('express');
@@ -15,7 +20,12 @@ const OpenApiValidator = require('express-openapi-validator');
 const swaggerUi = require('swagger-ui-express'); // UI API testing
 const YAML = require('js-yaml');
 const fs = require('fs');
-const apiSpec = YAML.load(fs.readFileSync('src/api/openapi.yaml')); // load the api spec
+let apiSpec = undefined; // api spec needs to be loaded in depending on where node is being run
+if (process.cwd().includes('backend')) {
+    apiSpec = YAML.load(fs.readFileSync('src/api/openapi.yaml')); // load the api spec from backend/
+} else {
+    apiSpec = YAML.load(fs.readFileSync('backend/src/api/openapi.yaml')); // load the api spec from root
+}
 
 
 const { createNewSecret, cleanUpExpiredSecrets, retrieveSecret } = require('./secret');

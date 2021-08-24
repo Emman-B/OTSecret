@@ -4,7 +4,7 @@
   "description": "OTSecret - a web app for sharing temporary secrets",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node backend/src/server.js"
   },
   "repository": {
     "type": "git",
