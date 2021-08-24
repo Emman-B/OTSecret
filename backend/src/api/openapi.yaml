@@ -1,0 +1,17 @@
+# OpenAPI specification (basic structure based off this: https://swagger.io/docs/specification/basic-structure/)
+openapi: 3.0.0
+info:
+  title: otsecret OpenAPI Specification
+  version: 1.0.0
+# Paths
+paths:
+  /v1/:
+    get:
+      summary: Tests the server connection, returning a "Hello world" message.
+      responses:
+        '200':    # status code
+          description: A hello world string
+          content:
+            text/plain; charset=utf-8:
+              schema:
+                type: string
