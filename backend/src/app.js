@@ -41,7 +41,11 @@ app.use(express.json());
 // set up cors
 const devURL = `http://localhost:3000`;
 const prodURL = process.env.PROD_URL;
-app.use(cors({origin: process.env.NODE_ENV === 'development'?devURL: prodURL}));
+const allowedOrigins = [process.env.NODE_ENV === 'development'?devURL: prodURL];
+const corsOptions = {
+    origin: allowedOrigins
+};
+app.use(cors(corsOptions));
 
 // == Setting up api validation middleware ==
 // this sets up the api testing GUI
