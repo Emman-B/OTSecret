@@ -35,18 +35,13 @@ const { createNewSecret, cleanUpExpiredSecrets, retrieveSecret } = require('./se
 /**
  * Middleware Setup
  */
+// set up express json parser
+app.use(express.json());
 
 // set up cors
 const devURL = `http://localhost:3000`;
 const prodURL = process.env.PROD_URL;
-const allowedOrigins = [process.env.NODE_ENV === 'development'?devURL: prodURL];
-const corsOptions = {
-    origin: allowedOrigins
-};
-app.use(cors(corsOptions));
-
-// set up express json parser
-app.use(express.json());
+app.use(cors({origin: process.env.NODE_ENV === 'development'?devURL: prodURL}));
 
 // == Setting up api validation middleware ==
 // this sets up the api testing GUI
