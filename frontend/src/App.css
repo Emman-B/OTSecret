@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100&display=swap');
+.app-header {
+    background-color: #0B1320;
+    color: #AFC1D0;
+
+    text-align: center;
+    font-family: 'Poppins';
+
+
+    padding: 2rem 3rem;
+}
+
+.app-footer {
+    /* Push footer to bottom */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 15vh;
+
+    padding: 0.5rem 1rem;
+
+    box-shadow: 0px -5px 35px 5px #BFBDB7;
+}

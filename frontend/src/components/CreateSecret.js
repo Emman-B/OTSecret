@@ -1,3 +1,4 @@
+import './CreateSecret.css';
 import { useRef, useState } from "react";
 import axios from 'axios';
 import { backendURL } from "../App";
@@ -47,21 +48,23 @@ export default function CreateSecret() {
     }
 
     return (
-        <form>
-            <label>Password for secret (3-64 chars)</label>
-            <br></br>
-            <input ref={passwordRef} type='password'></input>
-            <br></br>
-            <label>Secret message (1-100 characters)</label>
-            <br></br>
-            <textarea ref={messageRef} type='text'></textarea>
-            <br></br>
-            <button disabled={loading} type='submit' onClick={(e) => {
-                e.preventDefault(); // prevents a refresh
-                makeSecret();
-            }}>{!loading?'Create Secret':'Creating Secret...'}</button>
+        <div className='create-secret'>
+            <form className='create-form'>
+                <label>Password for secret (3-64 chars)</label>
+                <br></br>
+                <input ref={passwordRef} type='password'></input>
+                <br></br>
+                <label>Secret message (1-100 characters)</label>
+                <br></br>
+                <textarea ref={messageRef} type='text'></textarea>
+                <br></br>
+                <button disabled={loading} type='submit' onClick={(e) => {
+                    e.preventDefault(); // prevents a refresh
+                    makeSecret();
+                }}>{!loading?'Create Secret':'Creating Secret...'}</button>
 
-            {showIDComponent()}
-        </form>
+                {showIDComponent()}
+            </form>
+        </div>
     );
 }

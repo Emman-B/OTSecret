@@ -3,6 +3,8 @@ import CreateSecret from "../components/CreateSecret";
 
 export default function HomeRoute() {
     return (
-        <CreateSecret />
+        <div>
+            <CreateSecret />
+        </div>
     );
 }

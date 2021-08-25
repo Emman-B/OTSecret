@@ -12,6 +12,13 @@ export const backendURL = (process.env.NODE_ENV === 'development')?
 function App() {
     return (
         <HashRouter>
+            {/* Header */}
+            <header className='app-header'>
+                <h1 className='app-title'>OTSecret</h1>
+                <h2 className='app-subtitle'>A way to send temporary secrets!</h2>
+            </header>
+
+            {/* Routes */}
             <Switch>
                 <Route exact path='/'>
                     <HomeRoute />
@@ -19,6 +26,12 @@ function App() {
                 <Route path='/:id' component={GetSecretRoute}>
                 </Route>
             </Switch>
+
+            
+            {/* Footer */}
+            <footer className='app-footer'>
+                <span>Created by Emmanuel Butor</span>
+            </footer>
         </HashRouter>
     );
 }
