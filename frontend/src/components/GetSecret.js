@@ -5,18 +5,23 @@ import { backendURL } from "../App";
 
 export default function GetSecret(props) {
     const [secretMessage, setSecretMessage] = useState(<div></div>);
+    const [loading, setLoading] = useState(false);
 
     const id = props.id;
 
     const passwordRef = useRef();
 
     const handlePasswordSubmit = () => {
+        setLoading(true);
         axios.post(`${backendURL}/v1/secret/${id}`, {password: passwordRef.current.value})
             .then((response) => {
                 setSecretMessage(<div>Secret message: {response.data.message}</div>)
             })
             .catch(() => {
                 setSecretMessage(<div>Failed</div>);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     };
 
@@ -29,10 +34,10 @@ export default function GetSecret(props) {
             <br></br>
             <input type='password' ref={passwordRef}></input>
 
-            <button type='submit' onClick={(e) => {
+            <button disabled={loading} type='submit' onClick={(e) => {
                 e.preventDefault(); // prevents a refresh
                 handlePasswordSubmit()
-            }}>Submit</button>
+            }}>{!loading?'Submit':'Loading...'}</button>
 
             {secretMessage}
         </form>

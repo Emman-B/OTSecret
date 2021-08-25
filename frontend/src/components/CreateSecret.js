@@ -5,11 +5,13 @@ import { backendURL } from "../App";
 
 export default function CreateSecret() {
     const [newID, setNewID] = useState();
+    const [loading, setLoading] = useState(false);
 
     const passwordRef = useRef();
     const messageRef = useRef();
 
     const makeSecret = () => {
+        setLoading(true);
         axios.post(`${backendURL}/v1/secret`, {password: passwordRef.current.value, message: messageRef.current.value})
             .then((response) => {
                 // success
@@ -20,6 +22,9 @@ export default function CreateSecret() {
             .catch((err) => {
                 // failure
                 setNewID(null);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }
 
@@ -51,10 +56,10 @@ export default function CreateSecret() {
             <br></br>
             <textarea ref={messageRef} type='text'></textarea>
             <br></br>
-            <button type='submit' onClick={(e) => {
+            <button disabled={loading} type='submit' onClick={(e) => {
                 e.preventDefault(); // prevents a refresh
                 makeSecret();
-            }}>Create secret</button>
+            }}>{!loading?'Create Secret':'Creating Secret...'}</button>
 
             {showIDComponent()}
         </form>
