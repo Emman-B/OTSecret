@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100&display=swap');
 html, body, #root {
+    /* root needs to have height 100% for sticky footer */
     height: 100%;
 }
 body {
@@ -7,6 +8,7 @@ body {
 }
 
 .app-body {
+    /* this needs to have height 100% for sticky footer */
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -35,6 +37,7 @@ body {
     justify-content: center;
 }
 .app-content {
+    /* this is needed for sticky footer */
     flex: 1 0 auto;
 }
 .app-panel {
@@ -51,7 +54,7 @@ body {
 
 .app-footer {
     /* Push footer to bottom */
-    flex-shrink: 0;
+    flex-shrink: 0;  /* this is needed for sticky footer */
 
     margin-top: 5rem;
     min-height: 100px;
