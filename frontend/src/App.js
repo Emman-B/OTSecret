@@ -10,7 +10,6 @@ export const backendURL = (process.env.NODE_ENV === 'development')?
     `http://localhost:3010`:`https://otsecret.herokuapp.com`;
 
 function App() {
-    console.log(process.env.NODE_ENV);
     return (
         <HashRouter>
             <Switch>

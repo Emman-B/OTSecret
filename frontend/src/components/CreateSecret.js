@@ -51,7 +51,10 @@ export default function CreateSecret() {
             <br></br>
             <textarea ref={messageRef} type='text'></textarea>
             <br></br>
-            <button type='submit' onClick={() => {makeSecret()}}>Create secret</button>
+            <button type='submit' onClick={(e) => {
+                e.preventDefault(); // prevents a refresh
+                makeSecret();
+            }}>Create secret</button>
 
             {showIDComponent()}
         </form>
