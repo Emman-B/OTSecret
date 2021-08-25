@@ -7,14 +7,17 @@ let path = pathModule.resolve(process.cwd(), '.env');
 if (!process.cwd().includes('backend')) {
     path = pathModule.resolve(process.cwd(), 'backend', '.env');
 }
+
+// == requires ==
 // set up dotenv
 require('dotenv').config({path: path});
-
 
 const express = require('express');
 const app = express(); // app is exported
 
 const cors = require('cors');
+
+const rateLimit = require('express-rate-limit');
 
 
 // == Setting up api validation ==
@@ -37,6 +40,15 @@ const { createNewSecret, cleanUpExpiredSecrets, retrieveSecret } = require('./se
  */
 // set up express json parser
 app.use(express.json());
+
+// set up rate limiter
+const limit = 5 * 60 * 1000; // limit in milliseconds
+const maxRequests = 100; // max number of requests
+const limiter = rateLimit({
+    windowMs: limit,
+    max: maxRequests,
+});
+app.use(limiter); // apply limiter to all requests
 
 // set up cors
 const devURL = `http://localhost:3000`;
