@@ -26,7 +26,7 @@ The secret has an expiration of 15 minutes, so after 15 minutes, the secret will
 This web app is accessible at this link: https://emman-b.github.io/OTSecret/#/
 
 ## Usage
-This is for hosting the web app locally.
+The following instructions are for hosting the web app locally.
 
 ### Requirements
 I used Node version 14.15.0. Older versions may work, but it has not been tested.
