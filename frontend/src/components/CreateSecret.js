@@ -31,11 +31,18 @@ export default function CreateSecret() {
 
     const showIDComponent = () => {
         if (newID) {
-            const newURL = `${window.location.href}${newID}`
+            const newURL = `${window.location.href}${newID}`;
+
+            // function for copying the url to clipboard
+            const copyToClipboard = () => {
+                navigator.clipboard.writeText(newURL);
+            };
+
             return (
                 <>
                     <span>Give this URL to the recipient: </span>
                     <a href={newURL}>{newURL}</a>
+                    <button type='button' onClick={() => copyToClipboard()}>Copy to Clipboard</button>
                 </>
             );
         } else if (newID === null) {
