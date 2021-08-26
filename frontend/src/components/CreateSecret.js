@@ -43,6 +43,10 @@ export default function CreateSecret() {
                     <span>Give this URL to the recipient: </span>
                     <a href={newURL}>{newURL}</a>
                     <button type='button' onClick={() => copyToClipboard()}>Copy to Clipboard</button>
+                    <span className='create-instructions'>
+                        This secret will expire in 15 minutes, or when the recipient
+                        reveals the secret.
+                    </span>
                 </>
             );
         } else if (newID === null) {

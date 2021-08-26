@@ -72,7 +72,7 @@ textarea:focus {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* centers items to middle of flex box */
-    align-items: center; /* centers items vertically */
+    align-items: flex-start; /* keeps the flex items to the top without stretching */
 }
 .app-panel {
     display: flex;
