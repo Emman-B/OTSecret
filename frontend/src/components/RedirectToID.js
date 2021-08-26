@@ -15,7 +15,7 @@ export default function RedirectToID() {
             <form className='redirect-id-form app-panel'>
                 <h4>If you have an ID of the secret...</h4>
                 <label title={idHelperTooltipContent}>Enter ID of secret</label>
-                <input type='text' title='Only letters and numbers' ref={idRef}></input>
+                <input type='text' title='Only letters and numbers' ref={idRef} placeholder='ID'></input>
                 <button onClick={(e) => {
                     e.preventDefault();
                     // input validation, only allow alphanumeric

@@ -58,9 +58,9 @@ export default function CreateSecret() {
             <form className='create-form app-panel'>
                 <h4>If you want to create a secret...</h4>
                 <label>Secret message (1-100 characters)</label>
-                <textarea maxLength={100} ref={messageRef} type='text'></textarea>
+                <textarea maxLength={100} ref={messageRef} type='text' placeholder='What secret do you want to share?'></textarea>
                 <label>Password for secret (3-64 chars)</label>
-                <input ref={passwordRef} type='password'></input>
+                <input ref={passwordRef} type='password' placeholder='Password'></input>
                 <button disabled={loading} type='submit' onClick={(e) => {
                     e.preventDefault(); // prevents a refresh
                     makeSecret();

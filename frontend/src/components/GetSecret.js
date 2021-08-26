@@ -1,3 +1,4 @@
+import './GetSecret.css';
 import axios from "axios";
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -26,20 +27,23 @@ export default function GetSecret(props) {
     };
 
     return (
-        <form>
-            <Link to='/'>Go back</Link>
-            <br></br>
-            <label>Please enter in a password for secret ID: {id}</label>
+        <div className='get-secret app-outer-panel'>
+            <form className='get-secret-form app-panel'>
+                <h4>Unlocking a secret message</h4>
+                <Link to='/' className='get-secret-back-link'>Go back</Link>
+                <br></br>
+                <label>Please enter in a password for secret ID: <div className='get-secret-id'>{id}</div></label>
 
-            <br></br>
-            <input type='password' ref={passwordRef}></input>
+                <br></br>
+                <input type='password' ref={passwordRef} placeholder='Password'></input>
 
-            <button disabled={loading} type='submit' onClick={(e) => {
-                e.preventDefault(); // prevents a refresh
-                handlePasswordSubmit()
-            }}>{!loading?'Submit':'Loading...'}</button>
+                <button disabled={loading} type='submit' onClick={(e) => {
+                    e.preventDefault(); // prevents a refresh
+                    handlePasswordSubmit()
+                }}>{!loading?'Submit':'Loading...'}</button>
 
-            {secretMessage}
-        </form>
+                {secretMessage}
+            </form>
+        </div>
     );
 }

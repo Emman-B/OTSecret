@@ -78,7 +78,7 @@ textarea:focus {
     display: flex;
     flex-direction: column;
 
-    width: clamp(250px, 50%, 400px);
+    width: clamp(250px, 40%, 400px);
 
     padding: 2rem 3rem;
     margin: 0.5rem 1rem;
