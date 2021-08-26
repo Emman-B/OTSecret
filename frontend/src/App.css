@@ -6,6 +6,33 @@ html, body, #root {
 body {
     background-color: hsl(165, 56%, 99%);
 }
+input {
+    outline: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 2px solid hsl(0, 0%, 55%);
+}
+
+input, textarea {
+    margin: 0.25rem 0;
+}
+
+input:focus {
+    background-color: hsl(200, 56%, 85%);
+}
+
+textarea {
+    outline: none;
+    resize: none;
+    height: 5rem;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid hsl(0, 0%, 55%);
+}
+
+textarea:focus {
+    background-color: hsl(200, 86%, 95%);
+}
 
 .app-body {
     /* this needs to have height 100% for sticky footer */
@@ -40,11 +67,18 @@ body {
     /* this is needed for sticky footer */
     flex: 1 0 auto;
 }
+
+.app-panels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centers items to middle of flex box */
+    align-items: center; /* centers items vertically */
+}
 .app-panel {
     display: flex;
     flex-direction: column;
 
-    width: clamp(100px, 50%, 300px);
+    width: clamp(250px, 50%, 400px);
 
     padding: 2rem 3rem;
     margin: 0.5rem 1rem;

@@ -4,7 +4,7 @@ import RedirectToID from "../components/RedirectToID";
 
 export default function HomeRoute() {
     return (
-        <div>
+        <div className='app-panels-container'>
             <CreateSecret />
             <RedirectToID />
         </div>

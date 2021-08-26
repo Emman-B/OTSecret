@@ -34,7 +34,6 @@ export default function CreateSecret() {
             const newURL = `${window.location.href}${newID}`
             return (
                 <>
-                    <br></br>
                     <span>Give this URL to the recipient: </span>
                     <a href={newURL}>{newURL}</a>
                 </>
@@ -50,11 +49,11 @@ export default function CreateSecret() {
     return (
         <div className='create-secret app-outer-panel'>
             <form className='create-form app-panel'>
-                <sub>If you want to create a secret...</sub>
+                <h4>If you want to create a secret...</h4>
+                <label>Secret message (1-100 characters)</label>
+                <textarea maxLength={100} ref={messageRef} type='text'></textarea>
                 <label>Password for secret (3-64 chars)</label>
                 <input ref={passwordRef} type='password'></input>
-                <label>Secret message (1-100 characters)</label>
-                <textarea ref={messageRef} type='text'></textarea>
                 <button disabled={loading} type='submit' onClick={(e) => {
                     e.preventDefault(); // prevents a refresh
                     makeSecret();
