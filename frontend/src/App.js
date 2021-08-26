@@ -34,7 +34,10 @@ function App() {
                 
                 {/* Footer */}
                 <footer className='app-footer'>
-                    <span>Created by Emmanuel Butor</span>
+                    <div>Created by Emmanuel Butor, 2021</div>
+                    <a target='_blank' className='app-footer-icon' href='https://github.com/Emman-B/OTSecret/' rel='noreferrer noopener'>
+                        <i className='devicon-github-original'></i>
+                    </a>
                 </footer>
             </div>
         </HashRouter>
