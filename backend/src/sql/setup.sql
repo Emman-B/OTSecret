@@ -1,0 +1,8 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+CREATE TABLE IF NOT EXISTS secrets (
+    id UUID UNIQUE PRIMARY KEY DEFAULT gen_random_uuid(),
+    password VARCHAR(64) NOT NULL,
+    message TEXT NOT NULL,
+    expiration TIMESTAMP WITH TIME ZONE NOT NULL
+);

@@ -7,8 +7,8 @@ const bcrypt = require('bcrypt'); // for password encryption
 const Cryptr = require('cryptr');
 const cryptr = new Cryptr(process.env.SECRET_KEY);
 
-// Storage involves using a Map(), mapping secret IDs to an object
-const storage = new Map();
+// get access to database functions
+const db = require('./db.js');
 
 /**
  * Deletes any expired secrets. This is middleware that should be run on every
@@ -18,15 +18,7 @@ const storage = new Map();
  * @param {import('express').NextFunction} next next function after the middleware 
  */
 exports.cleanUpExpiredSecrets = async (req, res, next) => {
-    for (const [key, value] of storage.entries()) {
-        const id = key;
-        const expirationDate = value.expires;
-
-        // delete if the expiration date is old
-        if (expirationDate <= new Date()) {
-            storage.delete(id);
-        }
-    }
+    await db.deleteExpiredSecrets();
     next();
 }
 
@@ -36,15 +28,6 @@ exports.cleanUpExpiredSecrets = async (req, res, next) => {
  * @param {import('express').Response} res server response
  */
 exports.createNewSecret = async (req, res) => {
-    // generate a random ID
-    let id = crypto.randomBytes(32).toString('hex');
-
-    // there is a rare possibility that the id is already in storage
-    //      so it should be handled
-    while (storage.has(id)) {
-        id = crypto.randomBytes(32).toString('hex');
-    }
-
     const {password, message} = req.body;
     const secret = {};
 
@@ -57,8 +40,8 @@ exports.createNewSecret = async (req, res) => {
     expirationDate.setMinutes(expirationDate.getMinutes() + 15);
     secret.expires = expirationDate;
 
-    // store the secret into storage
-    storage.set(id, secret);
+    // store the secret into the database
+    const id = await db.storeSecret(secret.password, secret.message, secret.expires);
 
     return res.status(200).json({id: id});
 }
@@ -71,7 +54,9 @@ exports.createNewSecret = async (req, res) => {
 exports.retrieveSecret = async (req, res) => {
     const {id} = req.params;
 
-    const secret = storage.get(id);
+    // get the secret from the database
+    const secret = await db.retrieveSecret(id);
+
     // if secret was not found, return 404
     if (secret == null) {
         return res.status(404).send();
@@ -81,7 +66,7 @@ exports.retrieveSecret = async (req, res) => {
     if (bcrypt.compareSync(password, secret.password)) {
         // correct password, decrypt the message and send it as a response
         const decryptedMessage = cryptr.decrypt(secret.message);
-        storage.delete(id);
+        await db.deleteSecret(id);
         return res.status(200).json({message: decryptedMessage});
     } else {
         return res.status(404).send();
