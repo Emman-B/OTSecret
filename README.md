@@ -2,7 +2,7 @@
 
 A web app for sharing temporary secrets!
 
-The frontend is hosted on GitHub Pages, and the backend is hosted on Heroku.
+The frontend is hosted on GitHub Pages, and the backend is hosted on Heroku. I used the Heroku Postgres add-on for database storage.
 
 ![main_view_desktop](https://user-images.githubusercontent.com/34151856/131023835-7b37d05d-338e-4406-809d-599fd56cd406.png)
 
@@ -21,6 +21,7 @@ The secret has an expiration of 15 minutes, so after 15 minutes, the secret will
 - Creating password-protected secrets
 - Retrieving secret messages when providing a password
 - Encrypting passwords and messages on the backend
+- Storing secrets into a Heroku Postgres Database
 
 ## Releases
 This web app is accessible at this link: https://emman-b.github.io/OTSecret/#/
@@ -29,10 +30,11 @@ This web app is accessible at this link: https://emman-b.github.io/OTSecret/#/
 The following instructions are for hosting the web app locally.
 
 ### Requirements
-I used Node version 14.15.0. Older versions may work, but it has not been tested.
+- Node version 14.15.0 (older versions may work)
+- PostgreSQL Database (I used the PostgreSQL Windows installer v13.3)
 
 ### Installation
-First, install the above required software.
+First, install the above required software. For PostgreSQL, keep track of the information you provided in the installation since you will need it when setting up environment variables.
 
 Next, you need to create a `.env` file in the `backend/` directory. I have a `.env.example` file with example values, so you can use that as a template.
 
