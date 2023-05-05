@@ -1,4 +1,5 @@
 import './App.css';
+import ErrorMessage from './components/ErrorMessage'
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 // import routes
@@ -19,6 +20,12 @@ function App() {
                     <h1 className='app-title'>OTSecret</h1>
                     <h2 className='app-subtitle'>A way to send temporary secrets!</h2>
                 </header>
+
+                {/* Error message is shown if running in production (otsecret.herokuapp.com) as this no longer functions. */}
+                {process.env.NODE_ENV === 'development'
+                    ? <></>
+                    : <ErrorMessage />
+                }
 
                 {/* Routes */}
                 <div className='app-content'>

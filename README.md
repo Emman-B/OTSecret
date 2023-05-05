@@ -46,6 +46,11 @@ In the `frontend/` and `backend/` directories, run the following:
 npm start
 ```
 
+Note: On the frontend, if you happen to run into a `digital envelope routines::unsupported` error when running the frontend locally, then try running the following instead (frontend only):
+```bash
+npm run local
+```
+
 By default, the frontend web application is accessible here:
 ```
 http://localhost:3000
