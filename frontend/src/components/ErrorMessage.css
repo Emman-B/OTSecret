@@ -10,5 +10,9 @@
 
 .hazard-symbol {
     font-size: xx-large;
-    margin: 8px;
+    margin: 0 8px;
+}
+
+.error-message * {
+    align-self: center;
 }
